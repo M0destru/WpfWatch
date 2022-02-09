@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="WpfWatch.Watch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Width="100" Height="100">
+                
+                <!-- Преобразование координат -->
+                <Grid.RenderTransform>
+                    <TranslateTransform X="50" Y="50" />
+                </Grid.RenderTransform>
+                
+                <!-- Контур -->
+                <Path Fill="Silver" Stroke="Silver">
+                    <Path.Data>
+                        <EllipseGeometry RadiusX="49" RadiusY="49" />
+                    </Path.Data>
+                </Path>
+                
+                <!-- Внутренний круг -->
+                <Path Fill="White" Stroke="WhiteSmoke">
+                    <Path.Data>
+                        <EllipseGeometry RadiusX="47" RadiusY="47" />
+                    </Path.Data>
+                </Path>
+
+                <!-- Центр -->
+                <Path Fill="White" StrokeThickness="0.4" Stroke="Black" Panel.ZIndex="4"> 
+                    <Path.Data>
+                        <EllipseGeometry RadiusX="1" RadiusY="1" />
+                    </Path.Data>
+                </Path>
+
+                <!-- Секундные деления -->
+                <Path
+                    StrokeThickness="1"
+                    StrokeDashArray="0 4.71"
+                    Stroke="Black"
+                    StrokeDashCap="Square">
+                    <Path.Data>
+                        <EllipseGeometry RadiusX="45" RadiusY="45" />
+                    </Path.Data>
+                </Path>
+                
+                <!-- Часовые деления часов -->
+                <Path
+                    StrokeThickness="2"
+                    StrokeDashArray="0 11.775"
+                    Stroke="Black"
+                    StrokeDashCap="Square">
+                    <Path.Data>
+                        <EllipseGeometry RadiusX="45" RadiusY="45" />
+                    </Path.Data>
+                </Path>
+                
+                <!-- Секундная стрелка -->
+                <Path Fill="Red" Panel.ZIndex="3">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name ="RotationSecond" Angle="5"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure IsClosed="True" StartPoint="0, 7">
+                                <LineSegment Point="-0.5,7"/>
+                                <LineSegment Point="-0.25,-42"/>
+                                <LineSegment Point="0,-43"/>
+                                <LineSegment Point="0.25,-42"/>
+                                <LineSegment Point="0.5,7"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                
+                <!-- Минутная стрелка -->
+                <Path Fill="#FF736A6A" Panel.ZIndex="2">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name ="RotationMinute" Angle="112"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure IsClosed="True" StartPoint="0, 0">
+                                <LineSegment Point="-0.75,0"/>
+                                <LineSegment Point="-0.5,-40"/>
+                                <LineSegment Point="0,-41"/>
+                                <LineSegment Point="0.5,-40"/>
+                                <LineSegment Point="0.75,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                
+                <!-- Часовая стрелка -->
+                <Path Fill="Black" Panel.ZIndex="1">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name ="RotationHour" Angle="152"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure IsClosed="True" StartPoint="0, 0">
+                                <LineSegment Point="-0.75,0"/>
+                                <LineSegment Point="-0.5,-32"/>
+                                <LineSegment Point="0,-33"/>
+                                <LineSegment Point="0.5,-32"/>
+                                <LineSegment Point="0.75,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>
